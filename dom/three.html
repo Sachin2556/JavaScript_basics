@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: rgb(6, 22, 14); color:#fff">
+   <ul class="language">
+         <li>Javascript</li>
+   </ul>
+</body>
+
+<script>
+    function addLanguage(langName){
+       const li= document.createElement('li');
+       li.innerHTML= `${langName}`;
+//  Through this query selector, it traverse all over list ,so this method is not suitable for very large list items
+       document.querySelector('.language').appendChild(li);
+    }
+
+    addLanguage("CPP");
+    addLanguage("JAVA");
+
+    // M2 : Good method for anything append in body 
+    function addOptLanguage(langName){
+       const li= document.createElement('li');
+        li.appendChild(document.createTextNode(langName));
+        // li.style.backgroundColor="black";
+        // insert in li listitems
+        document.querySelector('.language').appendChild(li);
+    }
+
+     addOptLanguage("Typescript");
+     addOptLanguage("Python");
+
+    //  edit 
+     const secondLang= document.querySelector("li:nth-child(2)");
+    //  secondLang.innerHTML="MOJO";
+    const newLi=document.createElement('li');
+    newLi.textContent="Golang";
+    secondLang.replaceWith(newLi);
+
+    // remove
+
+    const lastlang=document.querySelector("li:last-child");
+    // python remove easily
+    lastlang.remove();
+</script>
+</html>
